@@ -27,7 +27,11 @@ define(['jquery', 'core/log'], function($, log) {
                     log.debug('Essential Course Navigation AMD navbar height: ' + navbarHeight);
                 }
 
-                var page_href_base = location.href.substring(0,location.href.indexOf('#'));
+                var page_href_base = location.href;
+                var page_hash_loc;
+                if ((page_hash_loc = location.href.indexOf('#')) >= 0) {
+                    page_href_base = location.href.substring(0,page_hash_loc);
+                }
                 $('a[href*="#section-"]').each( function() {
                     var link_href_base = this.href.substring(0,this.href.indexOf('#'));
                     log.debug('Essential Course Navigation AMD navigation element: ' + $(this).attr('href'));
